@@ -6,7 +6,8 @@ class SnippetsController < ApplicationController
   # GET /snippets
   # GET /snippets.json
   def index
-    @snippets = Snippet.paginate(page: params[:page] || 1)
+    @search = Snippet.ransack(params[:q])
+    @snippets = @search.result.page(params[:page] || 1)
     @count = Snippet.all.count
   end
 
@@ -73,7 +74,7 @@ class SnippetsController < ApplicationController
 
   def redirection
     set_snippet
-    if @snippet.token? && @param.present?
+    if @snippet.present? && @snippet.token? && @param.present?
       redirect_to root_path
     end
   end

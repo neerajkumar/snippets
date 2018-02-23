@@ -8,5 +8,7 @@ Rails.application.routes.draw do
 
   root 'snippets#index'
   get '/search', to: 'snippets#search'
-  resources :snippets, except: [:edit, :destroy, :update]
+  resources :snippets, except: [:edit, :destroy, :update] do
+    collection { post :search, to: 'snippets#index' }
+  end
 end

@@ -1,18 +1,20 @@
-<p id="notice"><%= notice %></p>
+<% if @snippet.present? %>
+  <p id="notice"><%= notice %></p>
 
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= @snippet.content.split[0...15].join(' ') %></h3>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title"><%= @snippet.content.split[0...15].join(' ') %></h3>
+    </div>
+    <div class="panel-body">
+      <%= @snippet.content %>
+    </div>
   </div>
-  <div class="panel-body">
-    <%= @snippet.content %>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Share this</h3>
+    </div>
+    <div class="panel-body">
+      <%= snippet_share(@snippet) %>
+    </div>
   </div>
-</div>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Share this</h3>
-  </div>
-  <div class="panel-body">
-    <%= snippet_share(@snippet) %>
-  </div>
-</div>
+<% end %>
