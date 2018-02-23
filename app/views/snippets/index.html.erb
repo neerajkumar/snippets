@@ -1,0 +1,37 @@
+<p id="notice"><%= notice %></p>
+
+<%= form_tag '', remote: true, class: 'form-inline' do %>
+  <div class="form-group">
+    <%= text_field_tag :search, nil, placeholder: 'Search', class: 'form-control' %>
+  </div>
+<% end %>
+
+<div class="snip-header">
+  <h1>
+    <%= @snippets.size -%> out of <%= @count %> Snippets
+    <%= link_to button_tag('Create Snippet', class: 'btn btn-primary pull-right'), new_snippet_path %>
+  </h1>
+</div>
+<style>
+  .snip-header {
+      padding-bottom: 20px;
+  }
+</style>
+
+<%= will_paginate @snippets %>
+
+<div id="snippet">
+    <div class="panel panel-default">
+      <!-- List group -->
+      <ul class="list-group">
+        <% for snippet in @snippets %>
+          <%= active_snippet?(snippet) %>
+        <% end %>
+      </ul>
+    </div>
+</div>
+
+<%= will_paginate @snippets %>
+
+
+

@@ -1,14 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Snippets</title>
+  <title>SnippetDemo</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
+<style type="text/css">
+    body{
+        padding-top: 60px;
+    }
+</style>
 <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <%= link_to 'Snippet', root_path, class: 'navbar-brand' %>
+        </div>
+      </div>
+    </nav>
 
-<%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
 
 </body>
 </html>
